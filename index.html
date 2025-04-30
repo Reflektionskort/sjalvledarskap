@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="UTF-8">
+  <title>Dagens reflektion</title>
+  <style>
+    body {
+      background: #f0f4f8;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      font-family: 'Helvetica Neue', sans-serif;
+      margin: 0;
+    }
+    #card {
+      background: #ffffff;
+      padding: 40px;
+      border-radius: 16px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+      max-width: 600px;
+      text-align: center;
+      font-size: 1.3em;
+      line-height: 1.6;
+    }
+  </style>
+</head>
+<body>
+  <div id="card">Laddar dagens reflektion...</div>
+
+  <script>
+    const cards = [
+      "Vad brukar utmana mitt tålamod på jobbet – och hur hanterar jag det på ett medvetet sätt?",
+      "När upplever jag mest arbetsglädje – och vad i situationen bidrar till det?",
+      "Vilka tre saker ger mig mest energi i arbetslivet just nu?",
+      "Vilka är mina styrkor i yrkesrollen, och hur använder jag dem i vardagen?",
+      "Vilka situationer brukar vara mest utmanande – och vad är det egentligen som är svårt?",
+      "Vilka förutsättningar behöver jag för att prestera och må bra i mitt uppdrag?",
+      "Vilka styrkor vill jag utveckla för att växa i min roll?",
+      "Vad får mig att känna tillit till mina kollegor – och hur bidrar jag själv till tillit?",
+      "Hur påverkar mina känslor mitt agerande i olika arbetsmoment?",
+      "Hur kan jag bli nyfiken på mina egna reaktioner och tankar i olika situationer?",
+      "När jag tänker på jobbet hemma – vad känner jag? Hur vill jag känna? Vad kan jag göra för att påverka vad jag känner?",
+      "Hur visar jag ansvarstagande och delaktighet i möten och gemensamma beslut?",
+      "Vad gör jag i min profession för att fortsätta utvecklas och lära nytt?",
+      "Hur bidrar jag till en god samarbetskultur och känsla av gemenskap?",
+      "Ber jag aktivt om feedback – och hur hanterar jag den?",
+      "Hur brukar jag agera i konflikter – och vad kan jag göra för att bidra till lösning?",
+      "Vilka vanor eller rutiner stärker min balans mellan arbete och fritid?",
+      "När på dagen är min energi som bäst – och hur använder jag det?",
+      "Vilken energi tror jag att jag sprider på min arbetsplats? Vilken energi vill jag sprida?",
+      "Vilka signaler visar att jag är på väg att bli stressad – och hur kan jag lyssna på dem?",
+      "Vad i arbetsmiljön tenderar att stressa mig – och hur kan jag agera proaktivt?",
+      "Hur firar jag mina egna framgångar – små som stora?",
+      "Hur visar jag mig själv vänlighet och självmedkänsla när något är svårt?",
+      "Vad innebär det för mig att vara snäll mot mig själv – på riktigt?",
+      "Hur visar vi omsorg om varandra i vår arbetsgrupp?",
+      "Hur tar jag ansvar för mitt eget mående i arbetslivet?",
+      "Hur ser jag till att mina behov av återhämtning blir uppfyllda?",
+      "Hur ser jag till att mitt arbete är meningsfullt för mig – och hur skapar jag mening i det jag gör?",
+      "Hur visar jag både mig själv och andra att jag sätter gränser med respekt?",
+      "Hur bidrar jag till att vi firar framgångar tillsammans i arbetsgruppen?",
+      "Hur uttrycker jag mina åsikter samtidigt som jag tar hänsyn till mina kollegor?",
+      "Hur visar jag respekt i mina relationer på jobbet – och hur märks det?",
+      "Vilka begränsande föreställningar har jag om mig själv – och hur kan jag utmana dem?",
+      "Hur håller jag motivationen uppe under perioder med låg energi eller motgångar?",
+      "Hur stöttar jag kollegor när de går igenom något utmanande?",
+      "Hur skulle jag beskriva kulturen på min arbetsplats i ord?",
+      "När fungerar samarbetet som bäst – och hur kan vi skapa fler sådana tillfällen?",
+      "Vad innebär tydlig kommunikation för mig – och hur tränar jag på det?",
+      "Vad gör jag när jag känner mig osäker – och hur kan jag stärka min tillit till mig själv?",
+      "Vilka hjälpmedel eller rutiner har vi för att stärka vår kommunikation på arbetsplatsen?",
+      "Hur tror jag att andra uppfattar mig i vår grupp?",
+      "Hur vill jag bli uppfattad i mitt professionella sammanhang?",
+      "Vad är jag mest stolt över i mitt yrkesliv hittills?",
+      "När tog jag senast ett modigt beslut – och vad lärde jag mig av det?",
+      "Vad behöver jag för att känna mig trygg i ett arbetslag?",
+      "Hur vill jag att andra bemöter mig när de har synpunkter på mitt arbete?",
+      "Hur bidrar jag till att skapa trygghet i mitt team?",
+      "Hur visar jag att jag vill bidra till samarbete och god kultur?",
+      "Vad uppskattar jag mest i mitt team just nu?",
+      "Vad vill jag bidra med i teamet – idag, imorgon, i framtiden?",
+      "Vad är viktigast just nu för att skapa ett hållbart och gott arbetsklimat?",
+      "Hur bidrar jag till att nya kollegor känner sig inkluderade och välkomna?",
+      "Hur visar jag att jag strävar efter att vara mitt bästa jag på jobbet?",
+      "Hur tar jag ansvar för att följa gemensamma beslut – även när det är svårt?",
+      "Hur visar jag nyfikenhet inför andras perspektiv – även när vi tycker olika?",
+      "Vad innebär professionalism för mig i relation till andra?",
+      "Hur vill jag bli uppfattad av dem jag möter i min yrkesroll?",
+      "När jag tänker på en situation där jag känner stolthet över mitt agerande i mötet med andra, hur agerade jag då?",
+      "Hur kommunicerar jag med externa kontakter för att bygga förtroende och skapa goda relationer?",
+      "Vad är jag mest stolt över i mitt bemötande av människor jag möter i mitt arbete utanför organisationen?",
+      "När prövas mitt tålamod extra mycket i relation till dem jag möter i min yrkesroll – och hur hanterar jag det?",
+      "Hur tar jag ansvar i svåra eller utmanande situationer i mötet med dem jag möter i mitt arbete?",
+      "Vad gör jag för att utveckla min relationella kompetens i mötet med människor i min profession?",
+      "När någon jag möter visar frustration – hur anpassar jag mitt bemötande för att underlätta kommunikation och förståelse?",
+      "Vad gör jag för att skapa trygghet för dem jag möter i min yrkesroll?",
+      "Hur bidrar jag till att det jag gör skapar både engagemang och utveckling för dem jag möter i mitt arbete?",
+      "Hur visar jag att andras idéer och tankar är värdefulla i mötet med dem jag är till för?",
+      "Hur möter jag individers olika behov och intressen i mitt dagliga arbete?",
+      "När känner jag mig mest motiverad, och vad kan jag göra för att bibehålla den känslan?",
+      "Hur skapar jag utrymme för reflektion i min vardag – och vad händer när jag gör det?",
+      "Hur tar jag initiativ till förändring när något inte fungerar som det ska?",
+      "När har jag senast känt mig riktigt lyssnad på – vad i situationen gjorde skillnad?"
+    ];
+
+    const card = cards[Math.floor(Math.random() * cards.length)];
+    document.getElementById("card").innerText = card;
+  </script>
+</body>
+</html>
