@@ -1,0 +1,71 @@
+
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="UTF-8" />
+  <title>Dagens Reflektion</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Helvetica Neue', sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      transition: background-color 0.5s ease;
+      background-color: #FFD3CF;
+      color: #211b83;
+    }
+    .card {
+      max-width: 800px;
+      width: 90%;
+      padding: 60px 40px;
+      border-radius: 20px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      font-size: 1.5em;
+      background-color: #ffffffcc;
+      transition: all 0.4s ease;
+    }
+    .btn {
+      margin-top: 40px;
+      padding: 12px 24px;
+      font-size: 1em;
+      border: none;
+      border-radius: 30px;
+      background-color: #211b83;
+      color: white;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+    .btn:hover {
+      background-color: #3f51b5;
+    }
+    .logo {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      height: 40px;
+    }
+  </style>
+</head>
+<body>
+  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/34/Medborgarskolan_logo.svg/2560px-Medborgarskolan_logo.svg.png" class="logo" alt="Medborgarskolan logotyp" />
+  <div class="card" id="card">
+    <div id="question">Reflektion<br><br>utvecklas</div>
+    <button class="btn" onclick="nextCard()">Visa nästa kort</button>
+  </div>
+
+  <script>
+    const cards = [{"text": "Vad brukar utmana mitt tålamod på jobbet – och hur hanterar jag det på ett medvetet sätt?", "bg": "#FFD3CF", "textColor": "#211b83"}, {"text": "När upplever jag mest arbetsglädje – och vad i situationen bidrar till det?", "bg": "#EAD5EA", "textColor": "#211b83"}, {"text": "Vilka tre saker ger mig mest energi i arbetslivet just nu?", "bg": "#A758A5", "textColor": "#FFFFFF"}, {"text": "Vilka är mina styrkor i yrkesrollen, och hur använder jag dem i vardagen?", "bg": "#FFEDCF", "textColor": "#211b83"}, {"text": "Vilka situationer brukar vara mest utmanande – och vad är det egentligen som är svårt?", "bg": "#976F2B", "textColor": "#FFFFFF"}, {"text": "Vilka förutsättningar behöver jag för att prestera och må bra i mitt uppdrag?", "bg": "#EF7765", "textColor": "#211b83"}, {"text": "Vilka styrkor vill jag utveckla för att växa i min roll?", "bg": "#FFD3CF", "textColor": "#211b83"}, {"text": "Vad får mig att känna tillit till mina kollegor – och hur bidrar jag själv till tillit?", "bg": "#50A597", "textColor": "#211b83"}, {"text": "Hur påverkar mina känslor mitt agerande i olika arbetsmoment?", "bg": "#FFEDCF", "textColor": "#211b83"}, {"text": "Hur kan jag bli mer nyfiken på mina egna reaktioner istället för att döma dem?", "bg": "#A758A5", "textColor": "#FFFFFF"}, {"text": "När jag tänker på jobbet hemma – vad känner jag? Hur vill jag känna?", "bg": "#DCECEF", "textColor": "#211b83"}, {"text": "Hur visar jag ansvarstagande och delaktighet i möten och gemensamma beslut?", "bg": "#50A597", "textColor": "#211b83"}, {"text": "Vad gör jag för att fortsätta utvecklas och lära nytt i mitt arbete?", "bg": "#976F2B", "textColor": "#FFFFFF"}, {"text": "Hur bidrar jag till en god samarbetskultur och känsla av gemenskap?", "bg": "#FFD3CF", "textColor": "#211b83"}, {"text": "Ber jag aktivt om feedback – och hur hanterar jag den?", "bg": "#976F2B", "textColor": "#FFFFFF"}, {"text": "Hur brukar jag agera i konflikter – och vad kan jag göra för att bidra till lösning?", "bg": "#D85F4E", "textColor": "#FFFFFF"}, {"text": "Vilka vanor eller rutiner stärker min balans mellan arbete och fritid?", "bg": "#EAD5EA", "textColor": "#211b83"}, {"text": "När på dagen är min energi som bäst – och hur använder jag det?", "bg": "#D85F4E", "textColor": "#FFFFFF"}, {"text": "Vilken energi sprider jag i min omgivning – och vilken energi vill jag sprida?", "bg": "#FFD3CF", "textColor": "#211b83"}, {"text": "Vilka signaler visar att jag är på väg att bli stressad – och hur kan jag lyssna på dem?", "bg": "#D5A249", "textColor": "#211b83"}, {"text": "Vad i arbetsmiljön tenderar att stressa mig – och hur kan jag agera proaktivt?", "bg": "#DCECEF", "textColor": "#211b83"}, {"text": "Hur firar jag mina egna framgångar – små som stora?", "bg": "#50A597", "textColor": "#211b83"}, {"text": "Hur visar jag mig själv vänlighet och självmedkänsla när något är svårt?", "bg": "#976F2B", "textColor": "#FFFFFF"}, {"text": "Vad innebär det för mig att vara snäll mot mig själv – på riktigt?", "bg": "#50A597", "textColor": "#211b83"}, {"text": "Hur visar vi omsorg om varandra i vår arbetsgrupp?", "bg": "#A758A5", "textColor": "#FFFFFF"}, {"text": "Hur tar jag ansvar för mitt eget mående i arbetslivet?", "bg": "#EF7765", "textColor": "#211b83"}, {"text": "Hur ser jag till att mina behov av återhämtning blir uppfyllda?", "bg": "#EF7765", "textColor": "#211b83"}, {"text": "Hur visar jag både mig själv och andra att jag sätter gränser med respekt?", "bg": "#FFD3CF", "textColor": "#211b83"}, {"text": "Hur uttrycker jag mina åsikter samtidigt som jag visar hänsyn?", "bg": "#A758A5", "textColor": "#FFFFFF"}, {"text": "Hur visar jag respekt i mina relationer på jobbet – och hur märks det?", "bg": "#345E58", "textColor": "#FFFFFF"}, {"text": "Vilka begränsande föreställningar har jag om mig själv – och hur kan jag utmana dem?", "bg": "#D85F4E", "textColor": "#FFFFFF"}, {"text": "Hur stöttar jag kollegor när de går igenom något utmanande?", "bg": "#FFD3CF", "textColor": "#211b83"}, {"text": "Hur skulle jag beskriva kulturen på min arbetsplats i ord?", "bg": "#345E58", "textColor": "#FFFFFF"}, {"text": "När fungerar samarbetet som bäst – och hur kan vi skapa fler sådana tillfällen?", "bg": "#D5A249", "textColor": "#211b83"}, {"text": "Vad innebär tydlig kommunikation för mig – och hur tränar jag på det?", "bg": "#EF7765", "textColor": "#211b83"}, {"text": "Vilka hjälpmedel eller rutiner har vi för att stärka vår kommunikation?", "bg": "#345E58", "textColor": "#FFFFFF"}, {"text": "Hur tror jag att andra uppfattar mig i vår grupp?", "bg": "#345E58", "textColor": "#FFFFFF"}, {"text": "Hur vill jag bli uppfattad i mitt professionella sammanhang?", "bg": "#DCECEF", "textColor": "#211b83"}, {"text": "Vad är jag mest stolt över i mitt yrkesliv hittills?", "bg": "#EF7765", "textColor": "#211b83"}, {"text": "Vad behöver jag för att känna mig trygg i ett arbetslag?", "bg": "#C985C3", "textColor": "#211b83"}, {"text": "Hur vill jag att andra bemöter mig när de har synpunkter på mitt arbete?", "bg": "#50A597", "textColor": "#211b83"}, {"text": "Hur bidrar jag till att skapa trygghet i mitt team?", "bg": "#976F2B", "textColor": "#FFFFFF"}, {"text": "Hur visar jag att jag vill bidra till samarbete och god kultur?", "bg": "#DCECEF", "textColor": "#211b83"}, {"text": "Vad uppskattar jag mest i mitt team just nu?", "bg": "#EF7765", "textColor": "#211b83"}, {"text": "Vad vill jag bidra med i teamet – idag?", "bg": "#C985C3", "textColor": "#211b83"}, {"text": "Vad är viktigast just nu för att skapa ett hållbart och gott arbetsklimat?", "bg": "#DCECEF", "textColor": "#211b83"}, {"text": "Hur visar jag att jag strävar efter att vara mitt bästa jag på jobbet?", "bg": "#EF7765", "textColor": "#211b83"}, {"text": "Hur tar jag ansvar för att följa gemensamma beslut – även när det är svårt?", "bg": "#976F2B", "textColor": "#FFFFFF"}, {"text": "Vad innebär professionalism för mig i relation till andra?", "bg": "#345E58", "textColor": "#FFFFFF"}, {"text": "När känner jag mig mest motiverad – och vad hjälper mig att behålla det?", "bg": "#976F2B", "textColor": "#FFFFFF"}, {"text": "Hur skapar jag utrymme för reflektion i min vardag – och vad händer när jag gör det?", "bg": "#FFD3CF", "textColor": "#211b83"}, {"text": "Hur tar jag initiativ till förändring när något inte fungerar som det ska?", "bg": "#976F2B", "textColor": "#FFFFFF"}, {"text": "När har jag senast känt mig riktigt lyssnad på – vad i situationen gjorde skillnad?", "bg": "#EF7765", "textColor": "#211b83"}, {"text": "Hur visar jag nyfikenhet inför andras perspektiv – även när vi tycker olika?", "bg": "#D85F4E", "textColor": "#FFFFFF"}, {"text": "Hur bidrar jag till att nya kollegor känner sig inkluderade och välkomna?", "bg": "#D5A249", "textColor": "#211b83"}, {"text": "När tog jag senast ett modigt beslut – och vad lärde jag mig av det?", "bg": "#976F2B", "textColor": "#FFFFFF"}, {"text": "Vad gör jag när jag känner mig osäker – och hur kan jag stärka min tillit till mig själv?", "bg": "#50A597", "textColor": "#211b83"}, {"text": "Hur håller jag motivationen uppe under perioder med låg energi eller motgångar?", "bg": "#D5A249", "textColor": "#211b83"}, {"text": "Hur ser jag till att mitt arbete är meningsfullt för mig – och hur skapar jag mening i det jag gör?", "bg": "#50A597", "textColor": "#211b83"}, {"text": "Hur bidrar jag till att vi firar framgångar tillsammans i arbetsgruppen?", "bg": "#FFEDCF", "textColor": "#211b83"}, {"text": "Hur vill jag bli uppfattad av dem jag möter i min yrkesroll?", "bg": "#DCECEF", "textColor": "#211b83"}, {"text": "När jag tänker på en situation där jag känner stolthet över mitt agerande, hur agerade jag då – och vad gjorde det meningsfullt?", "bg": "#976F2B", "textColor": "#FFFFFF"}, {"text": "Hur kommunicerar jag med andra för att bygga förtroende i yrkesrelationer?", "bg": "#50A597", "textColor": "#211b83"}, {"text": "Hur kommunicerar jag med externa kontakter för att bygga förtroende och skapa goda relationer?", "bg": "#FFD3CF", "textColor": "#211b83"}, {"text": "Vad är jag mest stolt över i mitt bemötande av dem jag möter i mitt arbete?", "bg": "#50A597", "textColor": "#211b83"}, {"text": "När prövas mitt tålamod extra mycket i relation till dem jag möter i min yrkesroll – och hur hanterar jag det?", "bg": "#EF7765", "textColor": "#211b83"}, {"text": "Hur tar jag ansvar i svåra eller utmanande situationer i mötet med dem jag möter i mitt arbete?", "bg": "#D85F4E", "textColor": "#FFFFFF"}, {"text": "Vad gör jag för att utveckla min relationella kompetens i mötet med människor utanför min egen organisation?", "bg": "#976F2B", "textColor": "#FFFFFF"}, {"text": "När någon jag möter visar frustration – hur anpassar jag mitt bemötande för att underlätta kommunikation och förståelse?", "bg": "#A758A5", "textColor": "#FFFFFF"}, {"text": "Vad gör jag för att skapa trygghet för dem jag möter i min yrkesroll?", "bg": "#345E58", "textColor": "#FFFFFF"}, {"text": "Hur bidrar jag till att det jag gör skapar både engagemang och utveckling för dem jag möter i mitt arbete?", "bg": "#FFEDCF", "textColor": "#211b83"}, {"text": "Hur visar jag att andras idéer och tankar är värdefulla i mötet med dem jag är till för?", "bg": "#EAD5EA", "textColor": "#211b83"}, {"text": "Hur möter jag individers olika behov och intressen i mitt dagliga arbete?", "bg": "#EAD5EA", "textColor": "#211b83"}];
+
+    function nextCard() {
+      const randomIndex = Math.floor(Math.random() * cards.length);
+      const selected = cards[randomIndex];
+      document.getElementById("question").innerText = selected.text;
+      document.body.style.backgroundColor = selected.bg;
+      document.body.style.color = selected.textColor;
+    }
+  </script>
+</body>
+</html>
