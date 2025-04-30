@@ -1,76 +1,87 @@
 <!DOCTYPE html>
 <html lang="sv">
 <head>
-  <meta charset="UTF-8">
-  <title>Dagens reflektion</title>
+  <meta charset="UTF-8" />
+  <title>Reflektionskort</title>
   <style>
     body {
       margin: 0;
-      padding: 0;
-      background-color: #f7f7f7;
       font-family: 'Helvetica Neue', sans-serif;
       display: flex;
-      justify-content: center;
       align-items: center;
+      justify-content: center;
       height: 100vh;
+      background-color: #F7F5F2;
+      transition: background-color 0.5s ease;
     }
 
     .card {
-      background-color: #ffffff;
-      border-radius: 24px;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-      padding: 60px 40px;
-      max-width: 720px;
+      max-width: 700px;
       width: 90%;
+      padding: 60px 40px;
+      border-radius: 20px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
       text-align: center;
-      color: #333;
+      font-size: 1.4em;
+      background-color: white;
+      transition: all 0.4s ease;
     }
 
-    .header {
-      font-size: 1.2em;
-      letter-spacing: 1px;
-      font-weight: 600;
-      color: #888;
-      margin-bottom: 20px;
-    }
-
-    .question {
-      font-size: 1.6em;
-      font-weight: 500;
-      line-height: 1.6;
+    #question {
       white-space: pre-line;
+    }
+
+    .btn {
+      margin-top: 40px;
+      padding: 12px 24px;
+      font-size: 1em;
+      border: none;
+      border-radius: 30px;
+      background-color: #5C6BC0;
+      color: white;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .btn:hover {
+      background-color: #3f51b5;
     }
   </style>
 </head>
 <body>
-  <div class="card">
-    <div class="header">Dagens reflektion</div>
-    <div id="card" class="question">Laddar...</div>
+  <div class="card" id="card">
+    <div id="question">Reflektion\n\nutvecklas</div>
+    <button class="btn" onclick="nextCard()">Visa nästa kort</button>
   </div>
 
   <script>
     const cards = [
-      "Vad brukar utmana mitt tålamod på jobbet – och hur hanterar jag det på ett medvetet sätt?",
-      "När upplever jag mest arbetsglädje – och vad i situationen bidrar till det?",
-      "Vilka tre saker ger mig mest energi i arbetslivet just nu?",
-      "Vilka är mina styrkor i yrkesrollen, och hur använder jag dem i vardagen?",
-      "Vilka situationer brukar vara mest utmanande – och vad är det egentligen som är svårt?",
-      "Vilka förutsättningar behöver jag för att prestera och må bra i mitt uppdrag?",
-      "Hur visar jag respekt i mina relationer på jobbet – och hur märks det?",
-      "Vad innebär professionalism för mig i relation till andra?",
-      "Hur skapar jag utrymme för reflektion i min vardag – och vad händer när jag gör det?",
-      "Hur visar jag att andras idéer och tankar är värdefulla i mötet med dem jag är till för?",
-      "Hur bidrar jag till att skapa trygghet i mitt team?",
-      "Vad vill jag bidra med i teamet – idag, imorgon, i framtiden?",
-      "Vad behöver jag för att känna mig trygg i ett arbetslag?",
-      "Hur tar jag ansvar i svåra eller utmanande situationer i mötet med dem jag möter i mitt arbete?",
-      "Hur visar jag mig själv vänlighet och självmedkänsla när något är svårt?",
-      "När har jag senast känt mig riktigt lyssnad på – vad i situationen gjorde skillnad?"
-      // Lägg gärna till resten av frågorna från PDF:en
+      {
+        text: "Vad brukar utmana mitt tålamod på jobbet – och hur hanterar jag det på ett medvetet sätt?",
+        bgColor: "#FFF4E5"
+      },
+      {
+        text: "När upplever jag mest arbetsglädje – och vad i situationen bidrar till det?",
+        bgColor: "#E3F2FD"
+      },
+      {
+        text: "Vilka tre saker ger mig mest energi i arbetslivet just nu?",
+        bgColor: "#E8F5E9"
+      }
     ];
 
-    const randomCard = cards[Math.floor(Math.random() * cards.length)];
-    document.getElementById("card").innerText = randomCard;
+    let currentIndex = 0;
+
+    function nextCard() {
+      if (currentIndex >= cards.length) {
+        currentIndex = 0; // eller stäng knappen om du vill stoppa efter sista kortet
+      }
+
+      const card = cards[currentIndex];
+      document.getElementById("question").innerText = card.text;
+      document.body.style.backgroundColor = card.bgColor;
+      currentIndex++;
+    }
   </script>
 </body>
 </html>
